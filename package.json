@@ -4,6 +4,14 @@
   "description": "Blog for ml",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all --parallel security-check open:server lint:watch build-js",
+    "open:server": "node ./src/server/main.js",
+    "lint": "esw -c .eslintrc src --color",
+    "lint:watch": "npm run lint -- --watch",
+    "security-check": "nsp check",
+    "build-js": "mkdirp dist/scripts && browserify -t reactify ./src/app/main.js -o dist/scripts/bundle.js",
+    "build-css": "mkdir dist/css && cp -r ./src/app/styles/main.css",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,5 +19,20 @@
     "url": "git+https://github.com/z-shan/ml-blog.git"
   },
   "author": "Zeeshan Ahmed",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "express": "^4.15.3",
+    "open": "0.0.5",
+    "react": "^0.14.9",
+    "react-dom": "^0.14.9",
+    "react-router": "^0.13.3",
+    "reactify": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-watch": "^3.1.2",
+    "npm-run-all": "^4.0.2",
+    "nsp": "^2.6.3"
+  }
 }
