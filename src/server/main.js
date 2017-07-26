@@ -13,12 +13,13 @@ var port = process.env.PORT || 3001; // used to create, sign, and verify tokens
 mongoose.connect(config.database); // connect to database
 
 // use body parser so we can get info from POST and/or URL parameters
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
+//app.use('/api', auth);
 app.use('/api/user', require('./routes/userRoutes'));
 
 var BlogPost = require('./models/blogpost');

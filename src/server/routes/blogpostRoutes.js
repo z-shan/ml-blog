@@ -9,22 +9,27 @@ var routes = function(BlogPost) {
         .post(blogpostController.post);
 
     // middleware
-    blogpostRouter.use('/:postId', function (req, res, next) {
-        BlogPost.findById(req.params.postId, function(err, post) {
-                if(err) {
-                    res.status(500).send(err);
-                } else if(post) {
-                    req.post = post;
-                    next();
-                } else {
-                    res.status(404).send('post not found');
-                }
-            });
+    blogpostRouter.use('/:blogpostId', function (req, res, next) {
+        BlogPost.findById(req.params.blogpostId, function(err, post) {
+            if(err) {
+                res.status(500).send(err);
+            } else if(post) {
+                req.post = post;
+                next();
+            } else {
+                res.status(404).send('post not found');
+            }
+        });
     });
     blogpostRouter.route('/:blogpostId')
         .get(blogpostController.getById)
-        .patch(blogpostController.patchById)
+        .patch(blogpostController.updateById)
         .delete(blogpostController.deleteById);
+
+    blogpostRouter.route('/:blogpostId/comment')
+        .put(blogpostController.addComment);
+    blogpostRouter.route('/:blogpostId/comment/:commentId')
+        .delete(blogpostController.deleteComment);
 
     return blogpostRouter;
 };
