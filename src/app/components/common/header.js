@@ -7,7 +7,21 @@ var Link = Router.Link;
 var Header = React.createClass({
     render: function() {
 		return (
-            <h1>Hello World !!</h1>
+			<div className="header">
+				<div className="container">
+					<div className="head">
+						<div className="navigation">
+							<span className="menu"></span> 
+							<ul className="navig">
+								<li><Link to="home"  className="active">Home</Link></li>
+								<li><Link to="about">About</Link></li>
+								<li><Link to="gallery">Gallery</Link></li>
+							</ul>
+						</div>
+						<div className="clearfix"></div>
+					</div>
+				</div>
+			</div>
 		);
 	}
 });
