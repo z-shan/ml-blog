@@ -8,11 +8,12 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 
 var routes = (
-    <Route name="app" path="/" handler={require('./components/blog/ManageBlog')}>
-        <DefaultRoute handler={require('./components/blog/ManageBlog')} />
-        <Route name="login" handler={require('./components/login/ManageLoginPage')} />
+    <Route name="app" path="/" handler={require('./components/app')}>
+        <DefaultRoute handler={require('./components/blog/manageBlogPage')} />
+        <Route name="login" handler={require('./components/login/manageLoginPage')} />
         <Route name="about" handler={require('./components/common/header')} />
-        <Route name="home" handler={require('./components/common/header')} />
+        <Route name="home" handler={require('./components/blog/ManageBlogPage')} />
+        <Route name="blogpost" path="home/:id" handler={require('./components/blog/blogPost')} />
         <Route name="gallery" handler={require('./components/common/header')} />
         <NotFoundRoute handler={require('./components/notFoundPage')} />
     </Route>

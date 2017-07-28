@@ -7,9 +7,9 @@
     "restHelper.js"
   ],
   "scripts": {
-    "start": "npm-run-all --parallel security-check open:server lint:watch build-js",
+    "start": "npm-run-all --parallel security-check open:server lint:watch",
     "open:server": "nodemon ./src/server/main.js",
-    "lint": "esw -c .eslintrc src --color",
+    "lint": "esw -c .eslintrc src --color && npm run build-js",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "build-js": "mkdirp dist/scripts && browserify -t reactify ./src/app/main.js -o dist/scripts/bundle.js",

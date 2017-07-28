@@ -6,12 +6,21 @@ var Link = Router.Link;
 var Header = require('../common/header');
 var Footer = require('../common/footer');
 
+var BlogList = require('./blogList');
+var SidePane = require('./sidePane');
+
 var BlogPageManager = React.createClass({
     render: function() {
 		return (
 			<div>
-				<Header />
-				<Footer />
+					<div className="about">
+						<div className="container">
+							<div className="about-main">
+								<BlogList />
+								<SidePane />
+							</div>
+						</div>
+					</div>
 			</div>
 		);
 	}
