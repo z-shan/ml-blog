@@ -6,11 +6,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 @font-face {
     font-family: 'RobotoSlab-Regular';
-    src:url(/css/fonts/RobotoSlab-Regular.ttf) format('truetype');
+    src:url(/fonts/RobotoSlab-Regular.ttf) format('truetype');
 }
 @font-face {
     font-family: 'Raleway-Regular';
-    src:url(/css/fonts/Raleway-Regular.ttf) format('truetype');
+    src:url(/fonts/Raleway-Regular.ttf) format('truetype');
 }
 html, body{
     font-size: 100%;
@@ -1011,8 +1011,28 @@ ul.blog-ic li  span{
 ul.blog-ic li a:hover{
 	color:#190608;
 }
-.media {
-    margin-top: 22px;
+.comments .media:first-child {
+    margin-top: 10px;
+}
+
+.comments .delete-comment {
+	float: right;
+	cursor: pointer;
+}
+
+.bpostwrap {
+	padding: 12px;
+}
+
+.media, .bpostwrap {
+	margin-top: 22px;
+	background-color: #fff;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+.media .media-body {
+	padding: 12px;
 }
 .single {
 	padding: 6em 0;

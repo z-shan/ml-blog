@@ -12,7 +12,7 @@ apiRoutes.post('/authenticate', function(req, res) {
     }, function(err, user) {
 
         if (err) throw err;
-
+        
         if (!user) {
             res.json({ success: false, message: 'Authentication failed. User not found.' });
         } else if (user) {
@@ -32,9 +32,21 @@ apiRoutes.post('/authenticate', function(req, res) {
                 res.json({
                     success: true,
                     message: 'Login Success.',
-                    token: token
+                    jwt: token,
+                    user: {name: user.name, email: user.email}
                 });
             }
+        }
+    });
+});
+
+apiRoutes.post('/isvalidjwt', function(req, res) {
+    var token = req.body.jwt;
+    jwt.verify(token, config.secret, function(err, decoded) {
+        if(err) {
+            res.send(false);
+        } else {
+            res.send(true);
         }
     });
 });

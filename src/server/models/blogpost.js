@@ -7,6 +7,7 @@ var blogpostModel = new Schema({
     title : {type: String, required: true},
     content: {type: String},
     username : {type: String},
+    author : {type: String},
     datetime : {type: Date}, 
     comments: [{
         content: { type: String, required: true },

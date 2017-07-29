@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require('react');
+var Link = require('react-router').Link;
 
 var SidePane = React.createClass({
 
@@ -8,7 +9,7 @@ var SidePane = React.createClass({
 		return (
 			<div className="col-md-4 about-right heading">
                 <div className="abt-1">
-                    <h3>ABOUT US</h3>
+                    <div className="about-btn"><Link to="post">Post a Blog</Link></div>
                 </div>
                 <div className="abt-2">
                     <h3>YOU MIGHT ALSO LIKE</h3>

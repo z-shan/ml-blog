@@ -11,7 +11,7 @@ var App = React.createClass({
             <div>
                 <Header />
                 <RouteHandler />
-                
+                <div className="clearfix"></div>
                 <Footer />
             </div>
         );

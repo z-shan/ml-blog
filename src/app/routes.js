@@ -15,6 +15,7 @@ var routes = (
         <Route name="home" handler={require('./components/blog/ManageBlogPage')} />
         <Route name="blogpost" path="home/:id" handler={require('./components/blog/blogPost')} />
         <Route name="gallery" handler={require('./components/common/header')} />
+        <Route name="post" handler={require('./components/blog/newBlog')} />
         <NotFoundRoute handler={require('./components/notFoundPage')} />
     </Route>
 );

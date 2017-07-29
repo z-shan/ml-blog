@@ -7,12 +7,13 @@
     "restHelper.js"
   ],
   "scripts": {
-    "start": "npm-run-all --parallel security-check open:server lint:watch",
+    "start": "npm-run-all --parallel security-check open:server lint:watch watch-js",
     "open:server": "nodemon ./src/server/main.js",
-    "lint": "esw -c .eslintrc src --color && npm run build-js",
+    "lint": "esw -c .eslintrc src --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "build-js": "mkdirp dist/scripts && browserify -t reactify ./src/app/main.js -o dist/scripts/bundle.js",
+    "watch-js": "watchify -t reactify ./src/app/main.js -d -o dist/scripts/bundle.js -v",
     "build-css": "mkdir dist/css && cp -r ./src/app/styles/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,15 +28,18 @@
     "bootstrap": "^3.3.7",
     "browserify": "^14.4.0",
     "express": "^4.15.3",
+    "flux": "^2.0.3",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.10.8",
     "open": "0.0.5",
     "react": "^0.14.9",
     "react-dom": "^0.14.9",
     "react-router": "^0.13.3",
-    "reactify": "^1.1.1"
+    "reactify": "^1.1.1",
+    "toastr": "^2.1.2"
   },
   "devDependencies": {
     "eslint": "^4.2.0",

@@ -3,8 +3,28 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var AuthStore = require('../../stores/authStore');
 
 var Header = React.createClass({
+
+	// making this page aware of store changes
+	getInitialState: function() {
+		return {
+			loggedin: AuthStore.isLoggedIn()
+		};
+	},
+
+    componentWillMount: function() {
+        AuthStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount: function() {
+        AuthStore.removeChangeListener(this._onChange);
+    },
+    
+    _onChange: function() {
+        this.setState({loggedin: AuthStore.isLoggedIn()});
+    },
 
     render: function() {
 		return (
@@ -21,7 +41,7 @@ var Header = React.createClass({
 						</div>
 						<div className="header-right">
 							<div className="search-bar">
-								{!this.props.loggedIn ?
+								{!this.state.loggedin ?
 									<div className="about-btn"><Link to="login">Login / Signup</Link></div>
 									: "Welcome"
 								}

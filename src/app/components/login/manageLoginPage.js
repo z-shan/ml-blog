@@ -3,6 +3,9 @@
 var React = require('react');
 var Router = require('react-router');
 var LoginPage = require('./loginPage');
+var AuthActions = require('../../actions/authActions');
+var AuthStore = require('../../stores/authStore');
+var helper = require('../../restHelper');
 
 var ManageLoginPage = React.createClass({
     mixins: [
@@ -12,13 +15,13 @@ var ManageLoginPage = React.createClass({
     getInitialState: function () {
         return {
             selectedOption: 'signin',
-            auth: {email: null, password: null},
-            register: {name: '', email: '', password: '', repeatpassword: ''}
+            auth: {email: '', password: ''},
+            register: {name: '', email: '', password: '', repeatpassword: ''},
+            loginerror: false 
         };
     },
 
     handleOptionChange: function(changeEvent) {
-        console.log(changeEvent);
         this.setState({selectedOption: changeEvent});
     },
 
@@ -41,8 +44,19 @@ var ManageLoginPage = React.createClass({
     authenticate: function(event) {
         event.preventDefault();
         //AuthorApi.saveAuthor(this.state.author);
-        
-        this.transitionTo('home'); // transition to home after login
+        //AuthActions.authenticate(this.state.auth.email, this.state.auth.password);
+        //this.transitionTo('home'); // transition to home after login
+        var control = this;
+        helper.post('/api/user/authenticate', {username: this.state.auth.email, password: this.state.auth.password})
+            .then(function(data) {
+                console.log(data);
+                if(data.success) {
+                    AuthActions.loginUser(data);
+                    control.transitionTo('home');
+                } else {
+                    control.setState({loginerror: true});
+                }
+            });
     },
 
     render: function() {
@@ -53,7 +67,9 @@ var ManageLoginPage = React.createClass({
                 setRegisterState={this.setRegisterState}
                 selectedOption={this.state.selectedOption}
                 auth={this.state.auth}
-                register={this.state.register} />
+                register={this.state.register} 
+                authenticate={this.authenticate} 
+                loginerror={this.state.loginerror} />
         );
     }
 });

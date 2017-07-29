@@ -56,9 +56,11 @@ var blogpostController = function(BlogPost) {
 
     var addComment = function(req, res) {
         
+        console.log('adding comment');
         req.post.comments.push({
             content: req.body.content,
             username: req.body.username,
+            author: req.body.author,
             datetime: new Date()
         });
 
@@ -91,6 +93,7 @@ var blogpostController = function(BlogPost) {
         }, function(err, result){
             console.log(err);
             console.log(result);
+            res.send('deleted');
         });
 
     };
