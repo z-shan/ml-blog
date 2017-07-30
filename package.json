@@ -18,6 +18,7 @@
     "cp-images": "mkdirp dist/images && cp ./src/app/images/*.* dist/images/",
     "cp-fonts": "mkdirp dist/fonts && cp ./src/app/fonts/*.* dist/fonts/",
     "clean": "rm -rf dist/",
+    "mkdb": "seed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -48,6 +49,7 @@
   "devDependencies": {
     "eslint": "^4.2.0",
     "eslint-watch": "^3.1.2",
+    "node-mongo-seeds": "^2.3.1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "nsp": "^2.6.3"

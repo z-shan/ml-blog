@@ -14,6 +14,9 @@ Chrome 58.0
 ## Run
 ````
 1. git clone https://github.com/z-shan/ml-blog.git
+2. npm install
+3. npm run mkdb
+4. npm start
 ````
 
 ## Components
