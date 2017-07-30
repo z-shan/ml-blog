@@ -7,14 +7,17 @@
     "restHelper.js"
   ],
   "scripts": {
-    "start": "npm-run-all --parallel security-check open:server lint:watch watch-js",
+    "start": "npm-run-all --parallel security-check cp-images cp-fonts build-css open:server lint:watch watch-js",
     "open:server": "nodemon ./src/server/main.js",
     "lint": "esw -c .eslintrc src --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "build-js": "mkdirp dist/scripts && browserify -t reactify ./src/app/main.js -o dist/scripts/bundle.js",
     "watch-js": "watchify -t reactify ./src/app/main.js -d -o dist/scripts/bundle.js -v",
-    "build-css": "mkdir dist/css && cp -r ./src/app/styles/main.css",
+    "build-css": "mkdirp dist/css && cat node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/toastr/build/toastr.css ./src/app/styles/*.css > dist/css/bundle.css",
+    "cp-images": "mkdirp dist/images && cp ./src/app/images/*.* dist/images/",
+    "cp-fonts": "mkdirp dist/fonts && cp ./src/app/fonts/*.* dist/fonts/",
+    "clean": "rm -rf dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +30,7 @@
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "browserify": "^14.4.0",
+    "css-bundler": "^0.1.2",
     "express": "^4.15.3",
     "flux": "^2.0.3",
     "jquery": "^3.2.1",
