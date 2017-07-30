@@ -120,6 +120,15 @@ ul.navig li a:hover ul.navig li a:after{
 	cursor: pointer;
 }
 
+.abt-left a {
+	text-decoration: none;
+	outline: 0;
+}
+
+.comment-bottom.heading {
+    margin-top: 12px;
+}
+
 @media (max-width: 768px){
 span.menu:before {
 	content: url(/images/nav-icon.png);
@@ -1050,6 +1059,7 @@ h4.media-heading {
 }
 .comments {
 	padding: 3em 0;
+	margin-top: 12px;
 }
 .comment-bottom form {
     width: 70%;

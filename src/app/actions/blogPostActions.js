@@ -16,8 +16,14 @@ var BlogPostActions = {
             actionType: ActionTypes.DELETE_COMMENT,
             post: data
         });
-    }
+    },
 
+    publishBlog: function(data) {
+        Dispatcher.dispatch({
+            actionType: ActionTypes.PUBLISH_BLOG,
+            post: data
+        });
+    }
 };
 
 module.exports = BlogPostActions;

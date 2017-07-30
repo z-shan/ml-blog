@@ -3,11 +3,16 @@ var blogpostController = function(BlogPost) {
     var post = function(req, res) {
         var post = new BlogPost(req.body);
         post.datetime = new Date();
+        post.tags = req.body.tags.split(',').map(function(item) {
+                        return item.trim();
+                    });
 
         post.save(function(err, result) {
             if(!err) {
                 res.status(201);
-                res.send(post);
+                res.send({success: true, data: post});
+            } else {
+                res.status(500).send({success: false});
             }
         });
     };
@@ -55,8 +60,7 @@ var blogpostController = function(BlogPost) {
     };
 
     var addComment = function(req, res) {
-        
-        console.log('adding comment');
+
         req.post.comments.push({
             content: req.body.content,
             username: req.body.username,

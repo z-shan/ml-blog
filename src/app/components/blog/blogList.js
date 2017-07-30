@@ -16,10 +16,12 @@ var BlogList = React.createClass({
 			var post = this.props.blogs[i];
 			blogposts.push(
 				<div key={post._id} className="col-md-6 abt-left">
-					<img src="images/c-3.jpg" alt="" />
-					<h3>{post.title}</h3>
-					<p>{post.content}</p>
-					<label>Posted by {post.author} on {utility.prettyDate(post.datetime)}</label>
+					<Link to="blogpost" params={{id: post._id}}>
+						<img src="images/c-3.jpg" alt="" />
+						<h3>{post.title}</h3>
+						<p>{post.content.substring(0, 65)+' ...'}</p>
+						<label>Posted by {post.author.split(' ')[0]} on {utility.prettyDate(post.datetime)}</label>
+					</Link>
 				</div>
 			);
 		}
@@ -32,10 +34,10 @@ var BlogList = React.createClass({
 				{this.props.blogs.length > 0 ?
 					<div className="about-two" key={this.props.blogs[0]._id}>
 						<img src="images/c-1.jpg" alt="" />
-						<p>Posted by {this.props.blogs[0].author} on Jul 27 2017 2:18 AM</p>
-						<p>{this.props.blogs[0].content}</p>
+						<p>Posted by {this.props.blogs[0].author.split(' ')[0]} on Jul 27 2017 2:18 AM</p>
+						<p>{this.props.blogs[0].title}</p>
 						<div className="about-btn">
-							<Link to="blogpost" params={{id: this.props.blogs[0]._id, isLoggedIn: this.props.isLoggedIn, user: this.props.user}}>Read More</Link>
+							<Link to="blogpost" params={{id: this.props.blogs[0]._id}}>Read More</Link>
 						</div>
 					</div> : 
 					<div></div>

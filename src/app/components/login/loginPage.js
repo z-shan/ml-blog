@@ -26,13 +26,14 @@ var LoginPage = React.createClass({
                             </div>
                             <div className="sign-up-htm">
                                 <Input for="name" label="Full Name" id="regname" type="text" value={this.props.register.name} onChange={this.props.setRegisterState} />
-                                <Input for="email" label="Email Address" id="regemail" type="text" value={this.props.register.name} onChange={this.props.setRegisterState}/>
-                                <Input for="password" label="Password" id="regpassword" type="password" value={this.props.register.name} onChange={this.props.setRegisterState}/>
-                                <Input for="repeatpassword" label="Repeat Password" id="regrepeatpassword" type="password" value={this.props.register.name} onChange={this.props.setRegisterState}/>
+                                <Input for="email" label="Email Address" id="regemail" type="text" value={this.props.register.email} onChange={this.props.setRegisterState}/>
+                                <Input for="password" label="Password" id="regpassword" type="password" value={this.props.register.password} onChange={this.props.setRegisterState}/>
+                                <Input for="repeatpassword" label="Repeat Password" id="regrepeatpassword" type="password" value={this.props.register.repeatpassword} onChange={this.props.setRegisterState}/>
+                                <Input for="interests" label="Interests (comma seperated)" id="interests" type="text" value={this.props.register.interests} onChange={this.props.setRegisterState}/>
                                 
-                                <div className="hr"></div>
+                                <div className="register-hr hr"></div>
                                 <div className="group">
-                                    <input type="submit" className="button" value="Sign Up" />
+                                    <input type="submit" className="button" value="Sign Up" onClick={this.props.registerUser}/>
                                 </div>
                                 
                             </div>

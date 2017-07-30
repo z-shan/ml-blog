@@ -5,6 +5,7 @@ var Router = require('react-router');
 var Link = Router.Link;
 var AuthStore = require('../../stores/authStore');
 var AuthActions = require('../../actions/authActions');
+var toastr = require('toastr');
 
 var Header = React.createClass({
 
@@ -34,6 +35,7 @@ var Header = React.createClass({
 	logout: function(ev) {
 		ev.preventDefault();
 		AuthActions.logoutUser();
+		toastr.success('You are now logged out.');
 		this.transitionTo('/');
 	},
 

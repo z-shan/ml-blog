@@ -44,6 +44,10 @@ Dispatcher.register(function(action) {
                 _posts.splice(idx, 1, action.post);
                 BlogStore.emitChange();
                 break;
+        case ActionTypes.PUBLISH_BLOG:
+                _posts.push(action.post);
+                BlogStore.emitChange();
+                break;
         default:
             // no op
     }

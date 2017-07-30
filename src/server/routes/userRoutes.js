@@ -56,10 +56,15 @@ apiRoutes.post('/register', function(req, res) {
     user.save(function(err, result) {
 
         if(err) {
-            res.send(500, err);
+            var msg = '';
+            
+            if(/duplicate key error/.test(err.errmsg)) {
+                msg = 'Email already used';
+            }
+            res.status(500).send({success: false, err: msg});
         } else {
             res.status(201);
-            res.send(user);
+            res.send({success: true});
         }
     });
 });

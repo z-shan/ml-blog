@@ -25,7 +25,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	height:100%;
 	position:absolute;
-	padding:90px 70px 50px 70px;
+	padding:60px 70px 50px;
 	background: #f9f9f9;
 }
 .login-html .sign-in-htm,
@@ -195,4 +195,49 @@ label.login-error {
     font-size: 12px;
     font-weight: normal;
     text-align: center;
+}
+
+.blogform {
+    margin: auto;
+	width: 590px;
+	min-height: 580px;
+}
+
+.blogform h3 {
+	color: #aaa;
+}
+
+.blogform textarea {
+	border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    height: 200px;
+    padding: 10px;
+    resize: none;
+    width: 100%;
+}
+
+.blogform textarea:focus {
+	border: 1px solid black;
+}
+
+.blogform .group {
+    margin-top: 10px;
+}
+
+.blogform label {
+    color: #aaa;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.blogform .about-btn.postblogform {
+    cursor: pointer;
+}
+.login-form .sign-up-htm .register-hr {
+	margin: 20px 10px;
+}
+
+.sign-up-htm input {
+	 padding: 8px;
 }
