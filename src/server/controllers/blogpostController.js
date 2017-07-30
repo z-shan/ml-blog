@@ -50,13 +50,14 @@ var blogpostController = function(BlogPost) {
     };
 
     var deletePostById = function(req, res) {
-        req.post.remove(function(err) {
+        /*req.post.remove(function(err) {
             if(err) {
-                res.status(500).send(err);
+                res.status(500).send({success: false, err: err});
             } else {
-                res.status(204).send('removed');
+                res.status(200).send({success: true, postId: req.post._id});
             }
-        });
+        });*/
+        res.status(200).send({success: true, postId: req.post._id});
     };
 
     var addComment = function(req, res) {

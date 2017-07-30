@@ -48,6 +48,11 @@ Dispatcher.register(function(action) {
                 _posts.push(action.post);
                 BlogStore.emitChange();
                 break;
+        case ActionTypes.DELETE_BLOG:
+                var index = _.findIndex(_posts, {_id: action.postId});
+                _posts.splice(index, 1);
+                BlogStore.emitChange();
+                break;
         default:
             // no op
     }

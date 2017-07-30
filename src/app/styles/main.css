@@ -241,3 +241,11 @@ label.login-error {
 .sign-up-htm input {
 	 padding: 8px;
 }
+
+.delete-blog i {
+	cursor: pointer;
+}
+
+.delete-blog {
+	text-align: right;
+}

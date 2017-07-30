@@ -110,6 +110,7 @@ ul.navig li a:hover ul.navig li a:after{
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	width: 49%;
 	margin-bottom: 2%;
+	height: 375px;
 }
 .abt-left:nth-child(even) {
 	margin-left: 2%;
@@ -1024,13 +1025,14 @@ ul.blog-ic li a:hover{
     margin-top: 10px;
 }
 
-.comments .delete-comment {
+.comments .delete-comment, .delete-blog {
 	float: right;
 	cursor: pointer;
 }
 
 .bpostwrap {
 	padding: 12px;
+	overflow: auto;
 }
 
 .media, .bpostwrap {

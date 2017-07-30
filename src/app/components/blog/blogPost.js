@@ -14,6 +14,10 @@ var toastr = require('toastr');
 
 var BlogPost = React.createClass({
 
+	mixins: [
+        Router.Navigation
+	],
+	
 	getInitialState: function() {
 		return {
 			post : null
@@ -51,14 +55,37 @@ var BlogPost = React.createClass({
 			});
 	},
 
+	deleteBlog: function(ev) {
+		ev.preventDefault();
+
+		var control = this;
+		helper.call('/api/blogpost/'+this.state.post._id, 'DELETE', null)
+			.then(function(data) {
+				if(data.success) {
+					control.transitionTo('/');
+					BlogPostActions.deleteBlog(data.postId);
+					toastr.success('Blog deleted.');
+				} else {
+					toastr.error('Not able to delete blog. Please try again.');
+				}
+			}).catch(function(err) {
+				toastr.error('Not able to delete blog. Please try again.');
+			});
+	},
+
+	editBlogPost: function(ev) {
+		ev.preventDefault();
+		this.transitionTo('post');
+	},
+
 	render: function() {
 		return (
 			<div className="single">
 				<div className="container">
 					<div className="single-top">
 						<div className="bpostwrap">
-							<img className="img-responsive" src="/images/single-1.jpg" alt=" " />
-							<div className=" single-grid">
+							<img className="img-responsive" src={this.state.post.image || "/images/single-1.jpg"} alt=" " />
+							<div className="single-grid">
 								<h4>{this.state.post.title}</h4>			
 								<ul className="blog-ic">
 									<li><span> <i  className="glyphicon glyphicon-user"></i>{this.state.post.author}</span></li>
@@ -66,6 +93,7 @@ var BlogPost = React.createClass({
 									<li><span><i className="glyphicon glyphicon-eye-open"></i>Hits:145</span></li>
 								</ul> 						
 								<p>{this.state.post.content}</p>
+								<div className="delete-blog"><i className="glyphicon glyphicon-edit" onClick={this.editBlogPost}></i><i className="glyphicon glyphicon-trash" onClick={this.deleteBlog}></i></div>
 							</div>
 						</div>
 						{this.state.post.comments.length > 0 ?
