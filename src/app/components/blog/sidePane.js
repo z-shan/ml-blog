@@ -9,7 +9,10 @@ var SidePane = React.createClass({
 		return (
 			<div className="col-md-4 about-right heading">
                 <div className="abt-1">
-                    <div className="about-btn"><Link to="post">Post a Blog</Link></div>
+                    {this.props.isLoggedIn ?
+                        <div className="about-btn"><Link to="post">Post Blog</Link></div> :
+                        <div className="about-btn"><Link to="login">Login to post Blog</Link></div>
+                    }
                 </div>
                 <div className="abt-2">
                     <h3>YOU MIGHT ALSO LIKE</h3>

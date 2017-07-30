@@ -11,6 +11,16 @@ var AuthorActions = {
             actionType: ActionTypes.USER_AUTHENTICATE,
             authData: data
         });
+    },
+
+    logoutUser: function() {
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('user');
+
+        Dispatcher.dispatch({
+            actionType: ActionTypes.USER_LOGOUT,
+            authData: null
+        });
     }
 };
 

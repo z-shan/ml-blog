@@ -52,7 +52,7 @@ var ManageLoginPage = React.createClass({
                 console.log(data);
                 if(data.success) {
                     AuthActions.loginUser(data);
-                    control.transitionTo('home');
+                    control.transitionTo('/');
                 } else {
                     control.setState({loginerror: true});
                 }

@@ -38,11 +38,16 @@ var AuthStore = assign({}, EventEmitter.prototype, {
 });
 
 Dispatcher.register(function(action) {
-    //action has 2 properties - ActionType and author (type and data)
+    //action has 2 properties - (type and data)
     switch(action.actionType) {
         case ActionTypes.USER_AUTHENTICATE:
                 _authToken = action.authData.jwt;
                 _user = action.authData.user;
+                AuthStore.emitChange();
+                break;
+        case ActionTypes.USER_LOGOUT:
+                _authToken = null;
+                _user = null;
                 AuthStore.emitChange();
                 break;
         default:

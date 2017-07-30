@@ -35,7 +35,7 @@ var BlogList = React.createClass({
 						<p>Posted by {this.props.blogs[0].author} on Jul 27 2017 2:18 AM</p>
 						<p>{this.props.blogs[0].content}</p>
 						<div className="about-btn">
-							<Link to="blogpost" params={{id: this.props.blogs[0]._id}}>Read More</Link>
+							<Link to="blogpost" params={{id: this.props.blogs[0]._id, isLoggedIn: this.props.isLoggedIn, user: this.props.user}}>Read More</Link>
 						</div>
 					</div> : 
 					<div></div>
