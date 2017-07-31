@@ -15,7 +15,7 @@
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "build-js": "mkdirp dist/scripts && browserify -t reactify ./src/app/main.js -o dist/scripts/bundle.js",
-    "watch-js": "watchify -t reactify ./src/app/main.js -d -o dist/scripts/bundle.js -v",
+    "watch-js": "mkdirp dist/scripts && watchify -t reactify ./src/app/main.js -d -o dist/scripts/bundle.js -v",
     "build-css": "mkdirp dist/css && cat node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/toastr/build/toastr.css ./src/app/styles/*.css > dist/css/bundle.css",
     "cp-images": "mkdirp dist/images && cp ./src/app/images/*.* dist/images/",
     "cp-fonts": "mkdirp dist/fonts && cp ./src/app/fonts/*.* dist/fonts/",
@@ -53,6 +53,7 @@
     "node-mongo-seeds": "^2.3.1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
-    "nsp": "^2.6.3"
+    "nsp": "^2.6.3",
+    "watchify": "^3.9.0"
   }
 }
