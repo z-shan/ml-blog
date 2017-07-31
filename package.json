@@ -7,8 +7,8 @@
     "restHelper.js"
   ],
   "scripts": {
-    "start": "npm-run-all --parallel security-check cp-images cp-fonts build-css lint:watch watch-js open:server",
-    "start-prod": "npm-run-all --parallel security-check cp-images cp-fonts build-js build-css run:server",
+    "start-dev": "npm-run-all --parallel security-check cp-images cp-fonts build-css lint:watch watch-js open:server",
+    "start": "npm-run-all --parallel security-check cp-images cp-fonts build-js build-css run:server",
     "run:server": "node ./src/server/main.js",
     "open:server": "nodemon ./src/server/main.js",
     "lint": "esw -c .eslintrc src --color",
