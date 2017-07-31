@@ -9,7 +9,7 @@ var mongoose    = require('mongoose');
 var config = require('./config'); // get our config file
 
 // configuration 
-var port = process.env.PORT || 3001; // used to create, sign, and verify tokens
+var port = process.env.PORT || config.port; // used to create, sign, and verify tokens
 mongoose.connect(config.database); // connect to database
 
 // use body parser so we can get info from POST and/or URL parameters
@@ -32,7 +32,5 @@ app.get('*', function(req, res) {
 app.listen(port, function(err) {
     if(err) {
         console.log(err);
-    }/* else {
-        open('http://localhost:'+port);
-    }*/
+    }
 });
