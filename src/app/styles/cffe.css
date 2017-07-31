@@ -102,6 +102,11 @@ ul.navig li a:hover ul.navig li a:after{
 	display: block;
 }
 
+div.about-two > img, .bpostwrap > img {
+	max-height: 500px;
+	width: 100%;
+}
+
 .abt-left {
 	padding: 10px;
 	background-color: #fff;
@@ -413,6 +418,7 @@ ul.navig li a.active{
 .abt-left img{
 	width:100%;
 	border-radius: 5px;
+	height: 250px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;

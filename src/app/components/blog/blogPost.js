@@ -73,11 +73,6 @@ var BlogPost = React.createClass({
 			});
 	},
 
-	editBlogPost: function(ev) {
-		ev.preventDefault();
-		this.transitionTo('post');
-	},
-
 	render: function() {
 		return (
 			<div className="single">
@@ -93,7 +88,14 @@ var BlogPost = React.createClass({
 									<li><span><i className="glyphicon glyphicon-eye-open"></i>Hits:145</span></li>
 								</ul> 						
 								<p>{this.state.post.content}</p>
-								<div className="delete-blog"><i className="glyphicon glyphicon-edit" onClick={this.editBlogPost}></i><i className="glyphicon glyphicon-trash" onClick={this.deleteBlog}></i></div>
+								{AuthStore.isLoggedIn() ?
+									<div className="delete-blog">
+										<Link to="managePost" params={{id: this.state.post._id}}><i className="glyphicon glyphicon-edit"></i></Link>
+										<i className="glyphicon glyphicon-trash" onClick={this.deleteBlog}></i>
+									</div> :
+									null
+								}
+								
 							</div>
 						</div>
 						{this.state.post.comments.length > 0 ?

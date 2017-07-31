@@ -249,3 +249,8 @@ label.login-error {
 .delete-blog {
 	text-align: right;
 }
+
+.about-tre .row {
+	margin-left: 0;
+	margin-right: 0;
+}

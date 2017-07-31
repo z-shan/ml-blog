@@ -42,9 +42,9 @@ var blogpostController = function(BlogPost) {
 
         req.post.save(function(err) {
             if(err) {
-                res.status(500).send(err);
+                res.status(500).send({success: false, err: err});
             } else {
-                res.json(req.post);
+                res.json({success: true, post: req.post});
             }
         });
     };

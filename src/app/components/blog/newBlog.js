@@ -6,18 +6,28 @@ var helper = require('../../restHelper');
 var toastr = require('toastr');
 var BlogPostActions = require('../../actions/blogPostActions');
 var AuthStore = require('../../stores/authStore');
+var BlogStore = require('../../stores/blogStore');
 
 var NewBlog = React.createClass({
 
     getInitialState: function() {
         return {
             blog: {
+                _id: '',
                 title: '',
                 image: '',
                 content: '',
                 tags: ''
             }
         };
+    },
+
+    componentWillMount: function() {
+        var postId = this.props.params.id; // from the path '/post:id'
+
+        if(postId) {
+            this.setState({blog: BlogStore.getPostById(postId)});
+        }
     },
 
     setBlog: function(event) {
@@ -29,17 +39,30 @@ var NewBlog = React.createClass({
         event.preventDefault();
 
         var user = AuthStore.getUser();
-        var data = Object.assign({}, this.state.blog, {username: user.email, author: user.name});
+        var data = (!this.state.blog._id) ? Object.assign({}, this.state.blog, {username: user.email, author: user.name}) : this.state.blog;
 
         var control = this;
-        helper.call('/api/blogpost', 'POST', data)
+
+        var method = 'POST',
+            url = '/api/blogpost',
+            msg = 'Thanks for publishing your blog.',
+            errmsg = 'Sorry could not publish your blog. Please try again.';
+
+        if(this.state.blog._id) {
+            method = 'PUT';
+            url += '/'+this.state.blog._id;
+            msg = 'Your blog is saved.';
+            errmsg = 'Could not save your blog. Please try again.';
+        }
+
+        helper.call(url, method, data)
             .then(function(result) {
                 if(result.success) {
                     BlogPostActions.publishBlog(result.data);
-                    toastr.success('Thanks for publishing your blog.');
+                    toastr.success(msg);
                     control.setState({blog: {title: '',image: '',content: '',tags: ''}});
                 } else {
-                    toastr.error('Sorry could not publish your blog. Please try again.');
+                    toastr.error(errmsg);
                 }
             });
     },

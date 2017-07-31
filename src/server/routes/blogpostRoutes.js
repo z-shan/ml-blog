@@ -23,7 +23,7 @@ var routes = function(BlogPost) {
     });
     blogpostRouter.route('/:blogpostId')
         .get(blogpostController.getById)
-        .patch(blogpostController.updateById)
+        .put(blogpostController.updateById)
         .delete(blogpostController.deleteById);
 
     blogpostRouter.route('/:blogpostId/comment')

@@ -30,6 +30,13 @@ var BlogPostActions = {
             actionType: ActionTypes.DELETE_BLOG,
             postId: data
         });
+    },
+
+    updateBlog: function(data) {
+        Dispatcher.dispatch({
+            actionType: ActionTypes.UPDATE_BLOG,
+            postId: data
+        });
     }
 };
 
