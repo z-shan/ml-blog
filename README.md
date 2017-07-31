@@ -19,6 +19,6 @@ Chrome 58.0
 4. install and start mongodb
     https://docs.mongodb.com/manual/administration/install-community/
 5. npm run mkdb
-6. npm start
+6. npm start-prod (for production) OR npm start (for dev)
 ````
 
