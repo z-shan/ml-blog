@@ -51,7 +51,7 @@ var BlogPageManager = React.createClass({
 										blogs={this.state.posts} /> :
 									<div>Loading...</div>
 								}
-								<SidePane isLoggedIn={this.state.isLoggedIn}/>
+								<SidePane user={AuthStore.getUser()} isLoggedIn={this.state.isLoggedIn} blogs={this.state.posts}/>
 							</div>
 						</div>
 					</div>

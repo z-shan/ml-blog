@@ -40,5 +40,13 @@ module.exports = {
 		//re-trim if we are in the middle of a word
 		trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
 		return trimmedString;
+	},
+
+	searchWholeWord: function(haystack, needle) {
+		var strings = haystack.toLowerCase().split(',').map(function(item){
+			return item.trim();
+		});
+		var word = needle.toLowerCase();
+		return strings.indexOf(word) !== -1;
 	}
 };

@@ -12,7 +12,7 @@ var blogpostController = function(BlogPost) {
                 res.status(201);
                 res.send({success: true, data: post});
             } else {
-                res.status(500).send({success: false});
+                res.status(500).send({success: false, error: err});
             }
         });
     };

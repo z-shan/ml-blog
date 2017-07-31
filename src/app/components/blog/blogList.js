@@ -12,7 +12,7 @@ var BlogList = React.createClass({
 		console.log('rendering list',this.props.blogs);
 		var blogposts = [];
 		var maxContentLength = 60,
-			maxTitleLength = 30;
+			maxTitleLength = 25;
 		for(var i=1; i<this.props.blogs.length; i++) {
 			var post = this.props.blogs[i];
 			
@@ -39,6 +39,7 @@ var BlogList = React.createClass({
 						</div>
 					</div>
 				);
+				i++;
 			} else {
 				blogposts.push(
 					<div className="row">

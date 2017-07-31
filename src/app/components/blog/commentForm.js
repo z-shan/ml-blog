@@ -35,13 +35,17 @@ var CommentForm = React.createClass({
         var control = this;
         helper.put('/api/blogpost/'+this.state.postid+'/comment', data)
             .then(function(data) {
+                console.log(data);
                 if(data) {
                    BlogPostActions.postComment(data);
                    toastr.success('Thanks for posting your comment !!');
                    control.setState({comment: ''});
                 } else {
                     //control.setState({loginerror: true});
+                    console.log("in else");
                 }
+            }).catch(function(err) {
+                toastr.error('Not able to post comment. Please try again.');
             });
     },
 

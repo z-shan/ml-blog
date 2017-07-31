@@ -88,7 +88,7 @@ var BlogPost = React.createClass({
 									<li><span><i className="glyphicon glyphicon-eye-open"></i>Hits:145</span></li>
 								</ul> 						
 								<p>{this.state.post.content}</p>
-								{AuthStore.isLoggedIn() ?
+								{(AuthStore.isLoggedIn() && AuthStore.getUser().email === this.state.post.username) ?
 									<div className="delete-blog">
 										<Link to="managePost" params={{id: this.state.post._id}}><i className="glyphicon glyphicon-edit"></i></Link>
 										<i className="glyphicon glyphicon-trash" onClick={this.deleteBlog}></i>

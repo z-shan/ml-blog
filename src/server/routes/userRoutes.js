@@ -33,7 +33,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                     success: true,
                     message: 'Login Success.',
                     jwt: token,
-                    user: {name: user.name, email: user.email}
+                    user: {name: user.name, email: user.email, interests: user.interests}
                 });
             }
         }

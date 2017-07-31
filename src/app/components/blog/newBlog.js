@@ -53,6 +53,8 @@ var NewBlog = React.createClass({
             url += '/'+this.state.blog._id;
             msg = 'Your blog is saved.';
             errmsg = 'Could not save your blog. Please try again.';
+        } else {
+            delete data._id;
         }
 
         helper.call(url, method, data)
@@ -75,7 +77,8 @@ var NewBlog = React.createClass({
                 content={this.state.blog.content}
                 tags={this.state.blog.tags}
                 setBlog={this.setBlog}
-                postBlog={this.postBlog}/>
+                postBlog={this.postBlog}
+                header={this.state.blog._id ? "Edit Blog" : "New Blog"} />
 		);
 	}
 });

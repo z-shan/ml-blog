@@ -8,7 +8,7 @@ var BlogForm = React.createClass({
 	render: function() {
 		return (
             <div className="blogform">
-                <h3>New Blog</h3>
+                <h3>{this.props.header}</h3>
                 <form>
                     <Input for="title" label="Title" id="title" type="text" value={this.props.title} onChange={this.props.setBlog} />
                     <Input for="image" label="Header Image (external url)" id="image" type="text" value={this.props.image} onChange={this.props.setBlog} />
