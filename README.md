@@ -22,3 +22,9 @@ Chrome 58.0
 6. npm start-prod (for production) OR npm start (for dev)
 ````
 
+## Login
+````
+username : xyz@gmail.com
+password : password
+````
+
