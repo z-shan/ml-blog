@@ -115,7 +115,7 @@ div.about-two > img, .bpostwrap > img {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	width: 49%;
 	margin-bottom: 2%;
-	height: 375px;
+	height: 390px;
 }
 .abt-left:nth-child(even) {
 	margin-left: 2%;
@@ -436,6 +436,7 @@ ul.navig li a.active{
 	font-size: 23px;
 	margin: 10px 0 0 0;
 	color: #212121;
+	text-transform: capitalize;
 }
 .abt-left h3 a{
 	color: #3d1a1b;
@@ -460,6 +461,10 @@ ul.navig li a.active{
 	color: #999;
 	margin-top: 4%;
 	font-weight: normal;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding-right: 5px;
 }
 .abt-2{
 	margin-top:12%;

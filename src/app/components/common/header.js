@@ -48,8 +48,6 @@ var Header = React.createClass({
 							<span className="menu"></span> 
 							<ul className="navig">
 								<li><Link to="/" className="active">Home</Link></li>
-								<li><Link to="about">About</Link></li>
-								<li><Link to="gallery">Gallery</Link></li>
 							</ul>
 						</div>
 						<div className="header-right">
